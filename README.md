@@ -1,25 +1,29 @@
 # facial_expressions
-A set of images for classifying facial expressions
+A set of images for classifying facial expressions.Dataset of different facial expressions used for training machine learning algorithms.
+Dataset forked from : https://github.com/muxspace/facial_expressions
 
-This repository is a dataset of different facial expressions used for 
-training machine learning algorithms.
+# Model for predicting facial expressions
+Convolutional Neural Network model is built using Keras.
 
-It is created by my machine learning graduate students.
+Model Layers are as follow:
 
-# Submissions
-Please do not use large image files. In general, images should be under 50KB.
-Consider that 1000 images at 50KB each is approximately 50MB
+2D Convolutional Neural Network Layer with 16 units with stride 3,3                                                                                                                
+2D Maximam Pooling Layer which convert matrix of m*n to (m/2)*(n*2) taking max((i,j),(i+1,j),(i,j+1),(i+1,j+1))                                                                     
+2D Convolutional Neural Network Layer with 32 units with stride 3,3                                                                                                                 
+2D Maximam Pooling Layer which convert matrix of m*n to (m/2)*(n*2) taking max((i,j),(i+1,j),(i,j+1),(i+1,j+1))                                                                     
+2D Convolutional Neural Network Layer with 64 units with stride 3,3                                                                                                                 
+2D Maximam Pooling Layer which convert matrix of m*n to (m/2)*(n*2) taking max((i,j),(i+1,j),(i,j+1),(i+1,j+1))                                                                     
+A Flatting layer which adds an extra dimension in data from (shape,) to (shape,1)                                                                                                   
+A simple Neural Network Layer of 1024 units with 1024 bias and activation relu                                                                                                     
+The final output layer with units equal to number of output possible and softmax activation function.                                                                                
 
-# Structure
-There are two directories. The `images` directory contains raw images. These
-are unprocessed. The `data` directory contains files specific to training.
-Most importantly, this includes the `legend.csv`, which maps an image in the
-`images` directory with a facial expression. 
 
-This file also has a user ID field. Please use something unique.
-It is primarily for tracking which students added which files.
-The IDs can be used for a secondary analysis to determine
-whether there are any patterns to the submissions.
+Data is OneHotEncoded
 
-# Emotions
-The set of emoions used are TBD
+Learning Rate=0.01
+
+Loss=Categorical since 8 categories
+
+Metrics=Accuracy
+
+Optimizer used=Adam
